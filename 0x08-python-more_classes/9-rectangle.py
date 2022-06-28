@@ -22,7 +22,7 @@ class Rectangle:
 
         self.width = width
         self.height = height
-        self.number_of_instances += 1
+        type(self).number_of_instances += 1
 
     @property
     def width(self):
@@ -83,7 +83,7 @@ class Rectangle:
         and decrements number of instances of rectangle
         """
         print("Bye rectangle...")
-        self.number_of_instances -= 1
+        type(self).number_of_instances -= 1
 
     @staticmethod
     def bigger_or_equal(rect_1, rect_2):
