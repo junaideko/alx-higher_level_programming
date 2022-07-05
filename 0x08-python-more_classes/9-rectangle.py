@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python 3
 """module defines a rectangle by width, height, area,
 and perimeter
 """
