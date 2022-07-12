@@ -77,7 +77,7 @@ class TestSquare_instantiation(unittest.TestCase):
         self.assertEqual(8, s.height)
 
     def test_x_getter(self):
-        self.assertEqual(0, Square(10).x
+        self.assertEqual(0, Square(10).x)
 
     def test_y_getter(self):
         self.assertEqual(0, Square(10).y)
