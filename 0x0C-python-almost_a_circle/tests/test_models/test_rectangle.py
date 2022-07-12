@@ -1,11 +1,9 @@
 #!/usr/bin/python3
-# test_rectangle.py
-
 """Defines unittests for models/rectangle.py.
 Unittest classes:
-    TestRectangle_instantiation - line 24
-    TestRectangle_width - line 113
-    TestRectangle_height - line 185
+    TestRectangle_instantiation - line 25
+    TestRectangle_width - line 114
+    TestRectangle_height - line 190
     TestRectangle_x - line 262
     TestRectangle_y - line 334
     TestRectangle_order_of_initialization - line 402
@@ -14,10 +12,9 @@ Unittest classes:
     TestRectangle_update_kwargs - line 676
     TestRectangle_to_dictionary - line 788
 """
-
-import unittest
-import sys
 import io
+import sys
+import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 
@@ -134,6 +131,10 @@ class TestRectangle_width(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle({"a": 1, "b": 2}, 2)
 
+    def test_bool_width(self):
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            Rectangle(True, 2)
+
     def test_list_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Rectangle([1, 2, 3], 2)
@@ -184,7 +185,7 @@ class TestRectangle_width(unittest.TestCase):
 
 
 class TestRectangle_height(unittest.TestCase):
-    """Unittests for testing initialization of Rectangle height attribute."""
+    """Unittests for testing initialization of Rectangle height attribute.""
 
     def test_None_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
@@ -277,6 +278,10 @@ class TestRectangle_x(unittest.TestCase):
     def test_dict_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Rectangle(1, 2, {"a": 1, "b": 2}, 2)
+
+    def test_bool_x(self):
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            Rectangle(1, 2, True, 2)
 
     def test_list_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
@@ -460,6 +465,7 @@ class TestRectangle_stdout(unittest.TestCase):
             print(rect)
         else:
             rect.display()
+
         sys.stdout = sys.__stdout__
         return capture
 
@@ -649,7 +655,7 @@ class TestRectangle_update_args(unittest.TestCase):
             r.update(89, "invalid", 1, 2, "invalid")
 
     def test_update_args_height_before_x(self):
-        r = Rectangle(10, 10, 10, 10, 10
+        r = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             r.update(89, 1, "invalid", "invalid")
 
@@ -794,7 +800,6 @@ class TestRectangle_to_dictionary(unittest.TestCase):
         r = Rectangle(10, 2, 4, 1, 2)
         with self.assertRaises(TypeError):
             r.to_dictionary(1)
-
 
 if __name__ == "__main__":
     unittest.main()
